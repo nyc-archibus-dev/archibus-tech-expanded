@@ -1,0 +1,39 @@
+<view version="2.0">
+	<title>Example - Send Email from View</title>
+	<!-- Example of sending an email to a user from an AXVW file using a ARCHIBUS default workflow rule. 
+			- In order for this example to work you must have your mail.properties file configured to work
+				with an SMTP server. -->
+	<js file="techx-email-sendfromview.js"/>
+	<message name="msgConfirmEmail">Email sent!</message>
+	<message name="bodyEmail">This will be the body of your email. You can set it here or in the accompanying JavaScript file.</message>
+	
+	<dataSource id="techXEmailView_ds0">
+		<table name="em" role="main"/>
+		<field table="em" name="em_id"/>
+		<field table="em" name="name_first"/>
+		<field table="em" name="name_last"/>
+		<field table="em" name="email"/>
+		<field table="em" name="bl_id"/>
+		<field table="em" name="fl_id"/>
+		<field table="em" name="rm_id"/>
+		
+	</dataSource>
+	
+	<panel id="techXEmailView_grid" type="grid" dataSource="techXEmailView_ds0">
+		
+		<!-- Developer note: Need to revise this to use controller based calls -->
+		<field controlType="button" onclick="techxEmailFunc">
+			<title translatable="true">Send Email</title>
+		</field>
+				
+		<field table="em" name="em_id"/>
+		<field table="em" name="name_first"/>
+		<field table="em" name="name_last"/>
+		<field table="em" name="email"/>
+		<field table="em" name="bl_id"/>
+		<field table="em" name="fl_id"/>
+		<field table="em" name="rm_id"/>
+		
+		<indexField table="em" name="em_id"/>
+	</panel>
+</view>

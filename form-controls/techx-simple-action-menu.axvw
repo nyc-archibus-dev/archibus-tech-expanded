@@ -1,0 +1,45 @@
+<view version="2.0">
+	<title>Example - Simple Action Group</title>
+	<!-- Simple example of adding an action group with sub-actions and attaching a controller events to them.
+		 Also see more verbose ARCHIBUS example ab-ex-work-wizard.axvw -->
+	<js file="techx-simple-action-menu.js"/>
+	
+	<dataSource id="techXActionMenu_ds0">
+		<table name="bl" role="main"/>
+		<field table="bl" name="bl_id"/>
+		<field table="bl" name="name"/>
+		<field table="bl" name="address1"/>
+		<field table="bl" name="city_id"/>
+		<field table="bl" name="state_id"/>
+		<field table="bl" name="regn_id"/>
+		<field table="bl" name="ctry_id"/>
+	</dataSource>
+	
+	<panel id="techXActionMenu_grid" type="grid" dataSource="techXActionMenu_ds0" multipleSelectionEnabled="true">
+		<!-- You can add an action dropdown list that sits on the panel title bar by using type="menu"-->
+		<action type="menu" mainAction="true">
+			<title>Commands</title>
+			<!-- Nest the sub-actions under the master action -->
+			<action id="ShowBl">
+				<title>Show Selected Buildings</title>
+				<!-- Auto-wiring doesn't work for nested actions so you must use <command> or add action event manually via JS API -->
+				<command type="callFunction" functionName="techXActionMenuCtrl.ShowSelectedBl()"/>
+			</action>
+			<action id="DeselectBl">
+				<title>Deselect Buildings</title>
+				<!-- Auto-wiring doesn't work for nested actions so you must use <command> or add action event manually via JS API -->
+				<command type="callFunction" functionName="techXActionMenuCtrl.DeselectBl()"/>
+			</action>
+		</action>
+		
+		<field table="bl" name="bl_id"/>
+		<field table="bl" name="name"/>
+		<field table="bl" name="address1"/>
+		<field table="bl" name="city_id"/>
+		<field table="bl" name="state_id"/>
+		<field table="bl" name="regn_id"/>
+		<field table="bl" name="ctry_id"/>
+		
+		<indexField table="bl" name="bl_id"/>
+	</panel>
+</view>

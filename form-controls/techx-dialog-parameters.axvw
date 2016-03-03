@@ -1,0 +1,66 @@
+<view version="2.0">
+	<title>Example - Passing Parameters to an Open Dialog</title>
+	<!-- Example of how to access parameters passed from an opener view to a dialog window. -->
+	<js file="techx-dialog-parameters.js"/>
+	
+	<dataSource id="techXDialogParams_ds0">
+		<table name="bl" role="main"/>
+		<field table="bl" name="bl_id"/>
+		<field table="bl" name="name"/>
+		<field table="bl" name="address1"/>
+		<field table="bl" name="city_id"/>
+		<field table="bl" name="site_id"/>
+		<field table="bl" name="state_id"/>
+		<field table="bl" name="regn_id"/>
+		<field table="bl" name="ctry_id"/>
+	</dataSource>
+	
+	<panel id="techXDialogParams_console" type="console" dataSource="techXDialogParams_ds0">
+		<title>Selection Console</title>
+		
+		<instructions>
+			[h1]Select Related Building Info[/h1]
+			[p][/p]
+			 
+			[ol]
+			[li][b]1.)[/b] Choose the type of info you would like to see in the popup dialog[/li]
+			[li][b]2.)[/b] Select building you would like to see info for.[/li]
+			[/ol]
+		</instructions>
+		
+		<field>
+			<title>Show information on the building's </title>
+			<html>
+				<select id="selectDialogType" name="selectDialogType" class="inputField_box">
+					<option value="site" selected="1">
+						<span translatable="true">Site	</span>
+					</option>
+					<option value="city">
+						<span translatable="true">City</span>
+					</option>
+				</select>
+			</html>
+        </field>
+		<!-- Weird quark in ARCHIBUS view rendering. Must add at least one dataSource field in order to prevent all from showing. -->
+		<field table="bl" name="bl_id" hidden="true"/>
+	</panel>
+	
+	<panel id="techXDialogParams_grid" type="grid" dataSource="techXDialogParams_ds0">		
+		<title translatable="true">Building List</title>
+		
+		<field controlType="button">
+			<title>Show Info</title>
+		</field>
+		
+		<field table="bl" name="bl_id"/>
+		<field table="bl" name="name"/>
+		<field table="bl" name="address1"/>
+		<field table="bl" name="site_id"/>
+		<field table="bl" name="city_id"/>
+		<field table="bl" name="state_id"/>
+		<field table="bl" name="regn_id"/>
+		<field table="bl" name="ctry_id"/>
+		
+		<indexField table="bl" name="bl_id"/>
+	</panel>
+</view>

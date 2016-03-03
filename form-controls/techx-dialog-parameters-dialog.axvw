@@ -1,0 +1,42 @@
+<view version="2.0">
+	<title>Example - Passing Parameters to an Open Dialog - Dialog</title>
+	<js file="techx-dialog-parameters-dialog.js"/>
+	
+	<dataSource id="techXDialogParams_ds0">
+		<table name="city" role="main"/>
+		<field table="city" name="city_id"/>
+		<field table="city" name="name"/>
+		<field table="city" name="state_id"/>
+		<field table="city" name="ctry_id"/>
+		<field table="city" name="timezone_id"/>
+	</dataSource>
+	
+	<dataSource id="techXDialogParams_ds1">
+		<table name="site" role="main"/>
+		<field table="site" name="site_id"/>
+		<field table="site" name="name"/>
+		<field table="site" name="no_bldgs"/>
+		<field table="site" name="ratio_ru"/>
+		<field table="site" name="ratio_ur"/>
+		<field table="site" name="area_rentable"/>
+	</dataSource>
+	
+	<panel id="techXDialogParams_cityForm" type="form" dataSource="techXDialogParams_ds0" showOnLoad="false">		
+		<title translatable="true">City Info</title>
+		<field table="city" name="city_id"/>
+		<field table="city" name="name"/>
+		<field table="city" name="state_id"/>
+		<field table="city" name="ctry_id"/>
+		<field table="city" name="timezone_id"/>
+	</panel>
+	
+	<panel id="techXDialogParams_siteForm" type="form" dataSource="techXDialogParams_ds1" showOnLoad="false">		
+		<title translatable="true">Site Info</title>
+		<field table="site" name="site_id"/>
+		<field table="site" name="name"/>
+		<field table="site" name="no_bldgs"/>
+		<field table="site" name="ratio_ru"/>
+		<field table="site" name="ratio_ur"/>
+		<field table="site" name="area_rentable"/>
+	</panel>
+</view>
