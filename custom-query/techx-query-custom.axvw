@@ -1,0 +1,139 @@
+<view version="2.0">
+	<!-- AWB: There are four basic <elements> to an ARCHIBUS AXVW view file. <view>, <dataSource>, <panel>, and <field>. Each
+			element has various attibutes that can be configured, for example above you see the "version" attibute for the <view> element, which
+			is set to "2.0". Each <element> has a parent-child-sibling relationship to each other <element>.
+				For more information on this technical concept visit, http://www.w3schools.com/xml/xml_tree.asp
+			
+			Most views can accomplish what business users need in those four basic <elements>.
+				For referencing the 22.1 version of the ARCHIBUS API, visit http://www.archibus.com/ai/abizfiles/v22.1_help/archibus_help/system/sysman.htm
+			
+			This view is an example of how to write a custom SQL query and display it in a grid in ARCHIBUS Web Central.
+				
+	-->
+	<dataSource id="dcasUserCfEm_ds0">
+		<!-- Define your custom query between the <sql> element -->
+		<sql dialect="generic">		
+			SELECT
+				afm_users.user_name, 
+				em.em_id, 
+				afm_users.email ${sql.as} user_email, 
+				afm_users.role_name, 
+				cf.cf_id, 
+				em.em_number, 
+				em.name_last, 
+				em.name_first, 
+				em.bl_id, 
+				em.fl_id, 
+				em.rm_id, 
+				em.dv_id, 
+				em.dp_id, 
+				em.phone,
+				cf.work_team_id, 
+				cf.tr_id, 
+				cf.reports_to, 
+				cf.is_supervisor, 
+				cf.position, 
+				cf.rate_hourly, 
+				cf.rate_double 
+			FROM afm_users
+			LEFT OUTER JOIN em ON afm_users.email = em.email
+			LEFT OUTER JOIN cf ON afm_users.email = cf.email
+		</sql>
+		
+		<!-- For fields that are not the "main" table, you must define what type of data they present
+				using the "dataType" attribute.
+		-->
+		<table name="afm_users" role="main"/>
+		<field table="afm_users" name="user_name"/>
+		<field table="afm_users" name="em_id" dataType="text"/>
+		<field table="afm_users" name="user_email"  dataType="text"/>
+		<field table="afm_users" name="role_name"/>
+		<field table="afm_users" name="cf_id" dataType="text"/>
+		<field table="afm_users" name="em_number" dataType="text"/>
+		<field table="afm_users" name="name_last" dataType="text"/>
+		<field table="afm_users" name="name_first" dataType="text"/>
+		<field table="afm_users" name="bl_id" dataType="text"/>
+		<field table="afm_users" name="fl_id" dataType="text"/>
+		<field table="afm_users" name="rm_id" dataType="text"/>
+		<field table="afm_users" name="dv_id" dataType="text"/>
+		<field table="afm_users" name="dp_id" dataType="text"/>
+		<field table="afm_users" name="phone" dataType="text"/>
+		<field table="afm_users" name="work_team_id" dataType="text"/>
+		<field table="afm_users" name="tr_id" dataType="text"/>
+		<field table="afm_users" name="reports_to" dataType="text"/>
+		<field table="afm_users" name="is_supervisor" dataType="text"/>
+		<field table="afm_users" name="position" dataType="text"/>
+		<field table="afm_users" name="rate_hourly" dataType="text"/>
+		<field table="afm_users" name="rate_double" dataType="text"/>
+	</dataSource>
+	
+	<panel id="dcasUserCfEm_grid" type="grid" dataSource="dcasUserCfEm_ds0" recordLimit="0">
+		<title translatable="true">DCAS User List (with Craftspersons and Employee Data)</title>
+		<field table="afm_users" name="user_name"/>
+		<field table="afm_users" name="em_id">
+			<title translatable="true">Employee Name</title>
+		</field>
+		<field table="afm_users" name="user_email">
+			<title translatable="true">Email Address</title>
+		</field>
+		<field table="afm_users" name="role_name"/>
+		<field table="afm_users" name="cf_id">
+			<title translatable="true">Craftsperson Code</title>
+		</field>
+		<!-- For fields that are not the "main" table, you must also define what column titles
+				should be presented to users using the <title> element, which is child to the <field> element.
+		-->
+		<field table="afm_users" name="em_number" dataType="text">
+			<title translatable="true">Employee Number</title>
+		</field>
+		<field table="afm_users" name="name_last" dataType="text">
+			<title translatable="true">Name - Last</title>
+		</field>
+		<field table="afm_users" name="name_first" dataType="text">
+			<title translatable="true">Name - First</title>
+		</field>
+		<field table="afm_users" name="bl_id" dataType="text">
+			<title translatable="true">Building Code</title>
+		</field>
+		<field table="afm_users" name="fl_id" dataType="text">
+			<title translatable="true">Floor Code</title>
+		</field>
+		<field table="afm_users" name="rm_id" dataType="text">
+			<title translatable="true">Room Code</title>
+		</field>
+		<field table="afm_users" name="dv_id" dataType="text">
+			<title translatable="true">Agency Code</title>
+		</field>
+		<field table="afm_users" name="dp_id" dataType="text">
+			<title translatable="true">Department Code</title>
+		</field>
+		<field table="afm_users" name="phone" dataType="text">
+			<title translatable="true">Phone - Work</title>
+		</field>
+		<field table="afm_users" name="work_team_id" dataType="text">
+			<title translatable="true">Work Team Code</title>
+		</field>
+		<field table="afm_users" name="tr_id" dataType="text">
+			<title translatable="true">Primary Trade</title>
+		</field>
+		<field table="afm_users" name="reports_to" dataType="text">
+			<title translatable="true">Reports To</title>
+		</field>
+		<field table="afm_users" name="is_supervisor" dataType="text">
+			<title translatable="true">Is Supervisor?</title>
+		</field>
+		<field table="afm_users" name="position" dataType="text">
+			<title translatable="true">Craftsperson Position</title>
+		</field>
+		<field table="afm_users" name="rate_hourly" dataType="text">
+			<title translatable="true">Hourly Rate</title>
+		</field>
+		<field table="afm_users" name="rate_double" dataType="text">
+			<title translatable="true">Doubletime Rate</title>
+		</field>
+		
+		<indexField table="afm_users" name="user_name"/>
+	</panel>
+
+
+</view>

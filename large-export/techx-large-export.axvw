@@ -1,0 +1,37 @@
+<view version="2.0">
+	<js file="techx-large-export.js"/>
+
+	<dataSource id="techxLargeExport_ds0">
+		<sql dialect="generic">
+			SELECT 
+				activity_log.activity_log_id,
+				description,
+				'a string' ${sql.as} vfield_string,
+				10.48 ${sql.as} vfield_decimal
+			FROM activity_log
+		</sql>
+		<table name="activity_log" role="main"/>
+		<field table="activity_log" name="activity_log_id"/>
+		<field table="activity_log" name="description"/>
+		<field table="activity_log" name="vfield_string" dataType="text"/>
+		<field table="activity_log" name="vfield_decimal" dataType="number"/>
+	</dataSource>
+	
+	<panel id="techxLargeExport_grid" type="grid" dataSource="techxLargeExport_ds0" showCounts="true">
+		<title translatable="true">Large Export</title>
+		
+		<action id="bigExport">
+			<title translatable="true">XLS</title>
+		</action>
+		
+		<field table="activity_log" name="activity_log_id"/>
+		<field table="activity_log" name="description"/>
+		<field table="activity_log" name="vfield_string" dataType="text">
+			<title translatable="true">Custom Text Field</title>
+		</field>
+		<field table="activity_log" name="vfield_decimal" dataType="number" decimals="1">
+			<title translatable="true">Custom Number Field</title>
+		</field>
+	</panel>
+
+</view>

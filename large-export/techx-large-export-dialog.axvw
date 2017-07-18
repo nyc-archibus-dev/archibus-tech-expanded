@@ -1,0 +1,37 @@
+<view version="2.0">
+	<js file="schema/ab-core/controls/progress/ab-progress.js"/>
+	<js file="techx-large-export-dialog.js"/>
+	<message name="PROGRESS_STOP_TRANSFER" translatable="true">Stop Transfer</message>
+	<message name="PROGRESS_ERROR_EMPTY_LOCALE_FILE" translatable="true">Please use browser button to locate a file to transfer in.</message>
+	<message name="NO_EXPORT_DATA" translatable="true">There is no data to export.</message>
+	<tabs id="tabs_abMoDataTransfer">
+		<tab name="moDataTransfer_action" selected="true" useFrame="false">
+			<title translatable="true">Transfer Action</title>
+			<panel type="html" id="panel_transferAction">
+				<action id="next">
+					<title translatable="true">Continue</title>
+				</action>
+				<html>
+			    	<table id="actionTable" class="panel" style="align:center">
+						<tr id="reports" valign="top">
+							<td rowspan="2" width="40%"></td>
+							<td>
+								<input type="radio" name="transferAction" value="OUT" checked="1">
+			                       	<b translatable="true">Transfer Out</b>
+			                   	</input>
+							</td>
+						</tr>
+			     	</table>        
+				</html>
+			</panel>
+		</tab>
+		<tab name="moDataTransfer_progress" useFrame="false">
+			<title translatable="true">Transfer Progress</title>
+			<panel type="html"  id="reportProgressPanel">
+				<action id="startOver">
+					<title translatable="true">Start Over</title>
+				</action>
+			</panel>  
+		</tab>
+	</tabs>
+</view>
